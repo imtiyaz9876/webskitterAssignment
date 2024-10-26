@@ -11,20 +11,16 @@ const CustomError = require("./utils/CustomError");
 const globalErrorHandler = require("./controllers/errorController");
 const { APP_PORT, DB_URL } = require("./config");
 const connectDatabase = require("./connection/db");
-const upload = multer({ dest: "uploads/" }); // Middleware for handling file uploads
-
+const upload = multer({ dest: "uploads/"}); // Middleware for handling file uploads
 const server = http.createServer(app);
-
 // Database connection
 connectDatabase();
-
 // Error handlers
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception occurred! Shutting down...");
   console.error(err.name, err.message);
   process.exit(1);
 });
-
 process.on("unhandledRejection", (err) => {
   console.error("Unhandled Rejection occurred! Shutting down...");
   console.error(err.name, err.message);
@@ -32,14 +28,12 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
-
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 300, // Limit each IP to 300 requests per windowMs
   message: "Too many requests from this IP, please try again later.",
 });
-
 // Middleware
 app.use(cors());
 app.use("/public", express.static("public"));

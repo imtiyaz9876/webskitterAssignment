@@ -1,6 +1,4 @@
 const User = require("../../models/userModel");
-
-
 const bcryptjs = require("bcryptjs");
 const Joi = require("joi");
 const { JWT_SECRET } = require("../../config");
@@ -31,10 +29,6 @@ const creat_token = async (id, role, email) => {
 };
 
 
-
-
-// Verify OTP
-//register user
 const register_user = async (req, role, res) => {
   try {
     const schema = Joi.object({
@@ -411,11 +405,8 @@ const forgot_password = async (req, res) => {
 };
 
 module.exports = {
- 
   register_user,
-  
   login_user,
-  
   update_password,
   update_profile,
   forgot_password,
