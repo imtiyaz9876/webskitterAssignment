@@ -52,6 +52,7 @@ The database consists of the following collections:
    ```bash
    git clone git@github.com:imtiyaz9876/webskitterAssignment.git
    cd repo-name
+   postmanCollectionLink=https://documenter.getpostman.com/view/30345969/2sAY4sjQF1
 
 npm install
 APP_PORT=your_port_number
